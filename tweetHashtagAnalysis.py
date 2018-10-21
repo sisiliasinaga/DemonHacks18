@@ -1,5 +1,6 @@
 import tweepy
 import csv
+import textclassifier
 
 from config import consumer_key, consumer_secret, access_token, access_token_secret
 from pprint import pprint
