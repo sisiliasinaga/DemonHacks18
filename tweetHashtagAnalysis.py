@@ -21,9 +21,3 @@ def hashAnalysis(hashtag):
             pass
 
     return data # returns a list
-
-for i in hashAnalysis("#gameofthrones"):
-    try:
-        print(i, "\n")
-    except:
-        pass
