@@ -21,10 +21,9 @@ def hashAnalysis(hashtag):
         except: 
             pass
             
-    with open('tweets.csv','w', encoding='UTF-8') as csvArchive:
+    with open('tweets.csv','w', encoding='UTF-8', newline='') as csvArchive:
         writer=csv.writer(csvArchive)
         for val in data:
             writer.writerow([val])
-
 
     return data # returns a list
