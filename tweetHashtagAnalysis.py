@@ -1,4 +1,5 @@
 import tweepy
+import csv
 
 from config import consumer_key, consumer_secret, access_token, access_token_secret
 from pprint import pprint
@@ -19,5 +20,8 @@ def hashAnalysis(hashtag):
                     data.append(tweet.text)
         except: 
             pass
-
+            
+    outfile = open('./tweets.csv','w')
+    writer=csv.writer(outfile)
+    writer.write(data)
     return data # returns a list
