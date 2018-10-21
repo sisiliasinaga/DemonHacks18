@@ -1,6 +1,8 @@
 import csv
-
+import codecs, json
+import pandas as pd
 import matplotlib
+import re
 from wordcloud.wordcloud import WordCloud
 
 # Need to install
@@ -17,10 +19,22 @@ from wordcloud.wordcloud import WordCloud
 matplotlib.use("TkAgg")
 your_list = []
 input_data = ""
-with open('test.csv', 'r') as f:
+
+with open('tweets.csv', 'r', encoding='UTF-8', newline='') as csvarchive:
+    entrada = csv.reader(csvarchive)
+    for reg in entrada:
+        input_data += ''.join(reg)
+
+input_data = re.sub(r'^https?:\/\/.*[\r\n]*', '', input_data, flags=re.MULTILINE) #Removes a few URLs
+input_data = re.sub(r"http\S+", "", input_data) #removes some URLs
+input_data = re.sub(r"pic\S+", "", input_data) #removes more URLs
+input_data = re.sub(r"https\S+", "", input_data) #even more URLs!
+
+'''
+with open('output.json', 'r') as f:
 	for row in csv.reader(f, delimiter=',', quoting=csv.QUOTE_NONE):
 		input_data += ''.join(row)
-
+'''
 #print(input_data)
 # Generate a word cloud image
 '''wordcloud = WordCloud(width=2000, height=1000).generate(input_data)
