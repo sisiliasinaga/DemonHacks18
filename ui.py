@@ -1,5 +1,7 @@
 #twitter analysis
 import os
+import tweetHashtagAnalysis
+
 class hashtag (object):
     def __init__(self,has):
         self.exists = True
@@ -25,11 +27,14 @@ class ui(Tk):
         self.make_widgets()
     def calc_reponse(self):
         self.tweet = hashtag(self.hashT.get())
+        hashAnalysis(self.tweet)
+        """
         if (self.tweet.ifexists()):
             response = str(self.tweet)
             showinfo(message= str(self.hashT.get())+' exists.\n'+ response)
         else:
             showinfo(message= 'This hashtag doesn\'t exist.\nEnter another.')
+            """
     def make_widgets(self):
         Label(self, text='Hashtag to search:',width=40).pack()
         self.hashT = Entry(self, width = 40)

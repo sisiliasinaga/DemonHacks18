@@ -27,4 +27,4 @@ def hashAnalysis(hashtag):
         for val in data:
             writer.writerow([val])
 
-    return data # returns a list
+    classifier(hashtag, data) # returns a list
