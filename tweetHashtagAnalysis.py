@@ -11,7 +11,7 @@ api = tweepy.API(auth)
 
 def hashAnalysis(hashtag):
     data = []
-    for tweet in tweepy.Cursor(api.search, q = hashtag, rpp = 500).items(500):
+    for tweet in tweepy.Cursor(api.search, q = hashtag, rpp = 50).items(50):
         try: # this handles unknown characters. i.e emojis
             if(tweet.text[:2] == 'RT'): # eliminates third part retweet application 
                 pass
@@ -21,7 +21,8 @@ def hashAnalysis(hashtag):
         except: 
             pass
             
-    outfile = open('./tweets.csv','w')
-    writer=csv.writer(outfile)
-    writer.write(data)
+    with open('tweets.csv','w', encoding='UTF-8', newline='\n') as csvArchive:
+        writer=csv.writer(csvArchive)
+        writer.writerow(data)
+        writer.close()
     return data # returns a list
